@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AJTBD Interview Builder</title>
+  <link rel="stylesheet" href="./styles.css">
+</head>
+<body>
+  <div class="app-shell">
+    <aside class="sidebar">
+      <div class="sidebar-block">
+        <div class="sidebar-head">
+          <div>
+            <p class="eyebrow">Шаблоны</p>
+            <h1>AJTBD Builder</h1>
+          </div>
+          <button id="new-template-btn" class="ghost-btn" type="button">Новый шаблон</button>
+        </div>
+        <div id="template-list" class="stack-list"></div>
+      </div>
+
+      <div class="sidebar-block">
+        <div class="sidebar-head">
+          <div>
+            <p class="eyebrow">Сессии</p>
+            <p class="sidebar-copy">Сохраняются в localStorage и доступны офлайн</p>
+          </div>
+          <button id="new-session-btn" class="ghost-btn" type="button">Новая сессия</button>
+        </div>
+        <div id="session-list" class="stack-list"></div>
+      </div>
+
+      <div class="sidebar-block danger-zone">
+        <p class="eyebrow">Сервис</p>
+        <button id="clear-sessions-btn" class="danger-btn" type="button">Очистить все сессии</button>
+      </div>
+    </aside>
+
+    <main class="workspace">
+      <section class="workspace-topbar">
+        <div>
+          <p class="eyebrow">Структурированный вывод</p>
+          <h2 id="workspace-title">Загрузка…</h2>
+          <p id="workspace-subtitle" class="workspace-copy"></p>
+        </div>
+        <div class="toolbar">
+          <button id="export-template-btn" class="ghost-btn" type="button">Шаблон JSON</button>
+          <button id="import-template-btn" class="ghost-btn" type="button">Импорт шаблона</button>
+          <button id="rename-template-btn" class="ghost-btn" type="button">Переименовать шаблон</button>
+          <button id="duplicate-template-btn" class="ghost-btn" type="button">Дублировать шаблон</button>
+          <button id="export-json-btn" class="primary-btn" type="button">Экспорт JSON</button>
+          <button id="export-csv-btn" class="ghost-btn" type="button">Экспорт CSV</button>
+        </div>
+      </section>
+
+      <section class="panel">
+        <div class="panel-head">
+          <div>
+            <p class="eyebrow">Текущая сессия</p>
+            <h3>Метаданные интервью</h3>
+          </div>
+        </div>
+        <div class="grid-two">
+          <label class="field-shell">
+            <span>Название сессии</span>
+            <input id="session-name-input" type="text" placeholder="Например: Интервью #12">
+          </label>
+          <label class="field-shell">
+            <span>Респондент</span>
+            <input id="session-respondent-input" type="text" placeholder="Имя или код респондента">
+          </label>
+        </div>
+      </section>
+
+      <section class="panel">
+        <div class="panel-head">
+          <div>
+            <p class="eyebrow">Граф</p>
+            <h3>Переменные из фигурных скобок</h3>
+            <p class="panel-copy">Эти значения автоматически подставляются в текст вопросов вместо полей вида <code>{...}</code>.</p>
+          </div>
+        </div>
+        <div id="graph-fields" class="graph-grid"></div>
+      </section>
+
+      <section class="panel">
+        <div class="panel-head">
+          <div>
+            <p class="eyebrow">Редактор</p>
+            <h3>Конструктор шаблона</h3>
+            <p class="panel-copy">Здесь можно менять граф, секции и поля активного шаблона. Изменения сохраняются локально.</p>
+          </div>
+          <div class="toolbar">
+            <button id="add-graph-var-btn" class="ghost-btn" type="button">Добавить переменную</button>
+            <button id="add-section-btn" class="ghost-btn" type="button">Добавить секцию</button>
+          </div>
+        </div>
+        <div id="template-editor" class="section-stack"></div>
+      </section>
+
+      <section id="template-sections" class="section-stack"></section>
+    </main>
+  </div>
+
+  <input id="template-import-input" type="file" accept="application/json" hidden>
+
+  <template id="list-item-template">
+    <button class="list-item" type="button">
+      <span class="list-item-title"></span>
+      <span class="list-item-meta"></span>
+    </button>
+  </template>
+
+  <template id="section-template">
+    <section class="panel section-panel">
+      <div class="panel-head">
+        <div>
+          <p class="eyebrow section-kicker"></p>
+          <h3 class="section-title"></h3>
+          <p class="panel-copy section-description"></p>
+        </div>
+      </div>
+      <div class="section-items"></div>
+    </section>
+  </template>
+
+  <script src="./app.js"></script>
+</body>
+</html>
