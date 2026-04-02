@@ -85,15 +85,19 @@ git push origin main
 1. Откройте `Settings`
 2. Перейдите в `Pages`
 3. В `Build and deployment` выберите:
-   `Source` → `Deploy from a branch`
-4. Выберите:
-   `Branch` → `main`
-   `Folder` → `/ (root)`
-5. Нажмите `Save`
+   `Source` → `GitHub Actions`
+4. Нажмите `Save`
 
 Через некоторое время сайт станет доступен по адресу вида:
 
 `https://evstygney.github.io/Ajtbd-S/`
+
+Если сразу открывается 404, проверьте:
+
+- что в `Settings` → `Pages` выбран именно `GitHub Actions`
+- что на вкладке `Actions` успешно выполнился workflow `Deploy GitHub Pages`
+- что вы открываете именно `https://evstygney.github.io/Ajtbd-S/`
+- что после первого деплоя прошло 1-3 минуты
 
 ## Обновление приложения
 
